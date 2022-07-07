@@ -8,9 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var firstName = ""
+    @State private var lastName = ""
+    @State private var company = ""
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                Form {
+                    Section(header: Text("Personal Info")) {
+                        TextField("First Name", text: $firstName)
+                        TextField("Last Name", text: $lastName)
+                        TextField("Company", text: $company)
+                    }
+                }
+            }
+            .navigationTitle("BMI CALCULATOR")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button {
+                        print("Save tapped")
+                    } label: {
+                        Label("Save", systemImage: "list.bullet.indent")
+                    }
+                }
+            }
+            .accentColor(.secondary)
+        }
     }
 }
 
